@@ -61,7 +61,7 @@
                                 Usa este número como referencia en tu transferencia
                             </p>
                         </div>
-
+ 
                         <!-- Tabla -->
                         <table width="100%" cellpadding="0" cellspacing="0"
                                style="border-collapse:collapse; margin-bottom:25px; color:#ffffff;">

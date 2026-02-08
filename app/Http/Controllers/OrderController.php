@@ -10,10 +10,10 @@ use App\Mail\OrderDeliveredAdmin;
 use App\Mail\OrderDeliveredCustomer;
 use App\Models\ProductVariant;
 use Illuminate\Support\Facades\Log;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 class OrderController extends Controller
 {
-    /**
+    /** 
      * Listar todas las órdenes (JSON)
      */
     public function index(Request $request)
@@ -160,4 +160,40 @@ public function update(Request $request, Order $order)
             'payments' => $payments,
         ]);
     }
+
+   public function printOrder(Order $order)
+{
+    $order->load([
+        'status',
+        'paymentMethod',
+        'items.product.variants.values.attribute',
+        'items.product.multimedia',
+    ]);
+
+    // preparar info de variantes (igual que en show)
+    $order->items->transform(function ($item) {
+        $variant = $item->product->variants->firstWhere('sku', $item->sku);
+
+        if ($variant) {
+            $item->variant_value = $variant->values
+                ->map(fn($v) => $v->attribute->name . ': ' . $v->value)
+                ->implode(', ');
+
+            $item->variant_price = $variant->price;
+        } else {
+            $item->variant_value = $item->sku;
+            $item->variant_price = $item->price;
+        }
+
+        return $item;
+    });
+
+    $pdf = Pdf::loadView('pdf.order', [
+        'order' => $order
+    ]);
+
+    return $pdf->download('orden_'.$order->id.'.pdf');
+}
+
+
 }

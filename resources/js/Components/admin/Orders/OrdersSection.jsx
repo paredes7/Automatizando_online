@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import ViewOrderModal from "./ViewOrderModal";
 import EditOrderModal from "./EditOrderModal";
 import GlobalSpinner from "./GlobalSpinner";
-
+import { Printer,Trash2,Pencil,Eye } from 'lucide-react';
 export default function OrdersSection() {
   const [orders, setOrders] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -102,6 +102,43 @@ export default function OrdersSection() {
     }
   };
 
+  const Print = async (id) => {
+  try {
+    setGlobalLoading(true);
+
+    const csrfToken = document
+      .querySelector('meta[name="csrf-token"]')
+      .getAttribute("content");
+
+    const res = await fetch(`/admin/print/${id}`, {
+      method: "GET",
+      headers: {
+        "X-CSRF-TOKEN": csrfToken,
+      },
+    });
+
+    if (!res.ok) {
+      throw new Error("Error al generar PDF");
+    }
+
+    const blob = await res.blob();
+    const url = window.URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `orden_${id}.pdf`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    window.URL.revokeObjectURL(url);
+  } catch (err) {
+    console.error(err);
+  } finally {
+    setGlobalLoading(false);
+  }
+};
+
   return (
     <div className="bg-white rounded-2xl shadow-xl p-4 max-w-7xl w-full">
       <GlobalSpinner visible={globalLoading} />
@@ -171,21 +208,28 @@ export default function OrdersSection() {
                       className="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
                       onClick={() => openViewModal(order.id)}
                     >
-                      Ver
+                      <Eye size={18} />
                     </button>
 
                     <button
                       className="px-2 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600"
                       onClick={() => openEditModal(order.id)}
                     >
-                      Editar
+                      <Pencil size={18} />
                     </button>
 
                     <button
                       className="px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600"
                       onClick={() => deleteOrder(order.id)}
                     >
-                      Eliminar
+                      <Trash2 size={18} />
+                    </button>
+
+                    <button
+                      className="px-2 py-1 bg-purple-600 text-white rounded hover:bg-purple-700"
+                      onClick={() => Print(order.id)}
+                    >
+                      <Printer size={18} />
                     </button>
                   </td>
                 </tr>

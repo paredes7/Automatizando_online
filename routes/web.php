@@ -116,12 +116,15 @@ Route::prefix('admin')->group(function () {
         Route::delete('/variants/{variant}', [AdminProductVariantsController::class, 'destroy'])
             ->name('admin.variants.destroy');
 
-
+ 
         //mostar estados y metodos de pago
         Route::get('/orders/meta', [OrderController::class, 'meta']);
                 // Ordenes
             Route::get('/orders', [OrderController::class, 'index']);
             Route::get('/orders/{order}', [OrderController::class, 'show']);
+            //imprimir orden
+            Route::get('/print/{order}', [OrderController::class, 'printOrder']);
+            //actualizar orden
             Route::put('/orders/{order}', [OrderController::class, 'update']);
             Route::delete('/orders/{order}', [OrderController::class, 'destroy']);
             

@@ -14,7 +14,7 @@ class OrderDeliveredCustomer extends Mailable
     public function __construct($order)
     {
         $this->order = $order;
-    }
+    } 
 
     public function build()
     {
