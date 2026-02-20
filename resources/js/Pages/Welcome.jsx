@@ -7,7 +7,7 @@ import Services from '@/Components/welcome/Services';
 export default function Welcome({ auth, categories, search, page, hasMore }) {
 
     return (
-        <Layout title="Maro|Inicio" auth={auth}>
+        <Layout title="Automatizando | Inicio" auth={auth}>
             <Banner
                 titleTop="Impulsa tu negocio"
                 titleBottom="con soluciones digitales efectivas."

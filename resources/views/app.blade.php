@@ -5,39 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <!-- Título dinámico -->
-    <title inertia>{{ config('app.name', 'Maro Uniformes') }}</title>
+    <title inertia>{{ config('app.name', 'Automatizando') }}</title>
 
-    <!-- Favicon -->
-    <link rel="icon" href="https://res.cloudinary.com/dnbklbswg/image/upload/v1765634166/Captura_de_pantalla_2025-12-13_075927_sujhuc.png" type="image/png">
+    <link rel="icon" href="https://res.cloudinary.com/dcyx3nqj5/image/upload/v1771539647/descarga_ip1yg8.jpg" type="image/png">
 
-    <!-- Fuente principal -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
 
-    <!-- Meta Open Graph para redes sociales -->
-    <meta property="og:title" content="Maro Uniformes" />
-    <meta property="og:description" content="Uniformes de calidad en Concepción, Chile" />
-    <meta property="og:image" content="https://res.cloudinary.com/dnbklbswg/image/upload/v1765634166/Captura_de_pantalla_2025-12-13_075927_sujhuc.png" />
+    <meta property="og:title" content="Automatizando | Soluciones Digitales" />
+    <meta property="og:description" content="Impulsa tu negocio con soluciones digitales efectivas, desarrollo web y automatización." />
+    <meta property="og:image" content="https://res.cloudinary.com/dcyx3nqj5/image/upload/v1771539647/descarga_ip1yg8.jpg" />
     <meta property="og:url" content="{{ url('/') }}" />
     <meta property="og:type" content="website" />
 
-    <!-- Meta para Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Maro Uniformes" />
-    <meta name="twitter:description" content="Ofrecemos uniformes de calidad en Concepción, Chile" />
-    <meta name="twitter:image" content="https://res.cloudinary.com/dnbklbswg/image/upload/v1765634166/Captura_de_pantalla_2025-12-13_075927_sujhuc.png" />
+    <meta name="twitter:title" content="Automatizando" />
+    <meta name="twitter:description" content="Diseñamos webs que venden y estrategias que convierten." />
+    <meta name="twitter:image" content="https://res.cloudinary.com/dcyx3nqj5/image/upload/v1771539647/descarga_ip1yg8.jpg" />
 
-    <!-- Fuentes -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-    <!-- Scripts Laravel + Inertia + React -->
     @routes
     @viteReactRefresh
     @vite(['resources/js/app.jsx', "resources/js/Pages/{$page['component']}.jsx"])
     @inertiaHead
 </head>
-<body class="font-sans antialiased">
+<body class="font-sans antialiased bg-[#0a0a0a]">
     @inertia
 </body>
 </html>

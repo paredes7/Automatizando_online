@@ -5,13 +5,13 @@ export default function Services() {
     {
       title: "Tienda Online",
       description: "Lleva tu negocio al siguiente nivel con una tienda virtual profesional, accesible las 24 horas y pasarela de pagos segura. Completamente diseñada para vender más.",
-      image: "https://res.cloudinary.com/dcyx3nqj5/image/upload/v1740000000/tienda_online.jpg",
+      image: "https://res.cloudinary.com/dcyx3nqj5/image/upload/v1771539647/descarga_ip1yg8.jpg",
       reverse: false // Imagen a la IZQUIERDA
     },
     {
       title: "Web Personalizada",
       description: "Creamos páginas web únicas adaptadas a tus necesidades, con diseño moderno, funcional y centrado en tus objetivos. Transformamos tu idea en realidad.",
-      image: "https://res.cloudinary.com/dcyx3nqj5/image/upload/v1740000001/web_personalizada.jpg",
+      image: "https://res.cloudinary.com/dcyx3nqj5/image/upload/v1771237622/4d1a4825268074aa0c8ed06658215760_lhw8vw.jpg",
       reverse: true // Imagen a la DERECHA
     }
   ];

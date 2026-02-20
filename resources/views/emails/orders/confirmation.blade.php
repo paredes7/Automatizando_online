@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Pedido Maro</title>
+    <title>Automatizando | Confirmación de Pedido</title>
 </head> 
 
 <body style="margin:0; padding:0; background-color:#f2f2f2; font-family:Arial, sans-serif;">
