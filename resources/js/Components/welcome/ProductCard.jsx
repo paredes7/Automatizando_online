@@ -38,12 +38,12 @@ export default function ProductCard({ product }) {
         <img
           src={imageUrl}
           alt={product.name}
-          className="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105 hover:rotate-1"
+          className="object-cover object-center w-full h-full transition-transform duration-500 hover:scale-105 hover:rotate-1"
         />
       </div>
 
-      <div className="p-5 flex flex-col gap-3">
-        <h3 className="text-xl font-extrabold uppercase tracking-wide text-darkGray">
+      <div className="flex flex-col gap-3 p-5">
+        <h3 className="text-xl font-extrabold tracking-wide uppercase text-darkGray">
           {product.name}
         </h3>
 
