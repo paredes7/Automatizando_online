@@ -11,6 +11,7 @@ export default function Condiciones({ auth, categories, search, page, hasMore })
                 titleTop="Condiciones de"
                 titleBottom="Nuestros Servicios"
                 subtitle="El marco legal que garantiza la calidad de su proyecto digital."
+                  height="h-[330px] md:h-[460px] mt-3"
                 showButton={false} // Ocultamos el botón para este caso
             />
             <TermsContent />

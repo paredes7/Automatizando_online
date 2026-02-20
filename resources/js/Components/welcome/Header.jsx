@@ -27,7 +27,6 @@ export default function Header() {
         <div className="container px-6 mx-auto">
           <div className="flex items-center justify-between lg:grid lg:grid-cols-3">
             
-            {/* --- LOGO --- */}
             <div className="flex justify-start">
               <Link href="/" className="transition-all hover:scale-105 active:scale-95">
                 <img
@@ -40,7 +39,6 @@ export default function Header() {
               </Link>
             </div>
 
-            {/* --- NAV DESKTOP --- */}
             <nav className="items-center justify-center hidden gap-10 lg:flex">
               {NAV_LINKS.map((link) => (
                 <NavLink
@@ -53,7 +51,6 @@ export default function Header() {
               ))}
             </nav>
 
-            {/* --- ACCIONES --- */}
             <div className="flex items-center justify-end gap-3 md:gap-6">
               <button className="hidden transition-all text-white/70 hover:text-yellow-500 sm:block hover:scale-110">
                 <User className="w-5 h-5" />
@@ -77,7 +74,6 @@ export default function Header() {
         </div>
       </header>
 
-      {/* MENÚ MÓVIL PROFESIONAL */}
       <MobileMenu 
         isOpen={mobileMenuOpen} 
         onClose={() => setMobileMenuOpen(false)} 
@@ -90,7 +86,6 @@ export default function Header() {
 function MobileMenu({ isOpen, onClose, isScrolled }) {
   return (
     <div className="lg:hidden">
-      {/* Backdrop: Oscurece el fondo para que el menú resalte */}
       <div 
         className={`fixed inset-0 backdrop-blur-sm z-[80] transition-opacity duration-600 ${
           isOpen ? "opacity-0" : "opacity-0 pointer-events-none"
@@ -98,7 +93,6 @@ function MobileMenu({ isOpen, onClose, isScrolled }) {
         onClick={onClose}
       />
 
-      {/* Contenedor del Menú */}
       <div
         className={`
           fixed left-0 w-full z-[90] bg-[#080e1a] 
@@ -129,7 +123,6 @@ function MobileMenu({ isOpen, onClose, isScrolled }) {
             </Link>
           ))}
           
-          {/* Item Extra: Login/User en Móvil */}
           <Link
             href="/login"
             className="flex items-center gap-3 px-8 py-3 text-[13px] font-bold tracking-widest text-yellow-500 uppercase transition-all rounded-full hover:bg-yellow-500 hover:text-white w-max"
