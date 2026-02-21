@@ -51,6 +51,10 @@ Route::prefix('carrito')->group(function () {
         return Inertia::render('Condiciones');
     })->name('condiciones');
 
+     Route::get('/servicios', function () {
+        return Inertia::render('Services');
+    })->name('servicios');
+
     // Endpoint para crear pedido
     Route::post('/orders/store', [PedidosController::class, 'store'])->name('orders.store');
 

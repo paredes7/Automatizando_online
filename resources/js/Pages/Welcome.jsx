@@ -4,6 +4,7 @@ import Videos from '@/Components/welcome/Videos';
 import Banner from '@/Components/welcome/Banner';
 import Services from '@/Components/welcome/Services';
 import RocketButtonV4 from '@/Components/ButtonEfect/RockerButton';
+import { CircuitEffect } from '@/Components/ButtonEfect/CircuitEffect';
 
 export default function Welcome({ auth, categories, search, page, hasMore }) {
 
@@ -16,9 +17,10 @@ export default function Welcome({ auth, categories, search, page, hasMore }) {
                 height="h-[360px] md:h-[470px]"
                 buttonText="Contactanos"
                 onButtonClick={() => window.location.href = '/Politicas'}
+                EffectComponent={CircuitEffect}
             />
 
-            <Services />
+            <Services  />
             <Products
                 categories={categories}
                 search={search}

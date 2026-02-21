@@ -1,0 +1,94 @@
+/* ===============================
+   VARIABLES DE TEMA LEGAL PREMIUM
+================================= */
+:root {
+  --legal-gold: #d4af37;
+  --legal-gold-soft: rgba(212, 175, 55, 0.25);
+  --legal-deep: #0b0f17;
+}
+
+/* ===============================
+   CONTENEDOR PRINCIPAL
+================================= */
+.legal-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 20%,
+    black 80%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 20%,
+    black 80%,
+    transparent
+  );
+}
+
+/* ===============================
+   SÍMBOLOS LEGALES
+================================= */
+.legal-symbol {
+  position: absolute;
+  top: -40px;
+  left: var(--left);
+  font-size: var(--size);
+  color: var(--legal-gold);
+  opacity: 0;
+
+  filter: drop-shadow(0 0 8px var(--legal-gold-soft));
+
+  animation: float-legal var(--duration) linear infinite;
+  animation-delay: var(--delay);
+
+  user-select: none;
+  letter-spacing: 1px;
+}
+
+/* ===============================
+   ANIMACIÓN FLUIDA Y SOBRIA
+================================= */
+@keyframes float-legal {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.35;
+  }
+
+  50% {
+    opacity: 0.25;
+  }
+
+  85% {
+    opacity: 0.35;
+  }
+
+  100% {
+    transform: translateY(350px);
+    opacity: 0;
+  }
+}
+
+/* ===============================
+   GRADIENTE INFERIOR ELEGANTE
+================================= */
+.legal-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10, 10, 15, 0.95),
+    rgba(10, 10, 15, 0.4),
+    transparent
+  );
+}

@@ -2,16 +2,20 @@ import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import RocketButtonProMax from "../ButtonEfect/RockerButton";
 
-export default function Banner({ img,
-  titleTop = "Impulsa tu negocio",
-  titleBottom = "con soluciones digitales efectivas.",
-  subtitle = "Diseñamos webs que venden, estrategias que convierten.",
-  buttonText = "Contáctanos",
-  onButtonClick = () => { },
-  height = "h-[360px] md:h-[470px]",
-  showButton = true
+export default function Banner(
+  { img,
+    titleTop = "Impulsa tu negocio",
+    titleBottom = "con soluciones digitales efectivas.",
+    subtitle = "Diseñamos webs que venden, estrategias que convierten.",
+    buttonText = "Contáctanos",
+    onButtonClick = () => { },
+    height = "h-[360px] md:h-[470px]",
+    showButton = true,
+    positionImage = "center 70%",
+    showEffect = true,
+    EffectComponent: Effect = null
 
-}) {
+  }) {
   return (
     <section className={`relative w-full ${height} overflow-hidden bg-[#0a0a0a] flex items-center justify-center`}>
 
@@ -20,7 +24,7 @@ export default function Banner({ img,
         style={{
           backgroundImage: `url(${img || "https://res.cloudinary.com/dcyx3nqj5/image/upload/v1771539647/descarga_ip1yg8.jpg"})`,
 
-          backgroundPosition: "center 70%",
+          backgroundPosition: positionImage,
 
 
         }}
@@ -28,83 +32,7 @@ export default function Banner({ img,
         <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
       </div>
 
-
-      <div className="absolute bottom-0 left-0 w-full h-[130px] pointer-events-none">
-        <svg
-          viewBox="0 0 1400 180"
-          className="absolute bottom-0 w-full h-full opacity-70"
-          preserveAspectRatio="none"
-        >
-          <defs>
-            <filter id="neon-glow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="3" result="blur" />
-              <feComposite in="SourceGraphic" in2="blur" operator="over" />
-            </filter>
-
-            <linearGradient id="line-grad" x1="0%" y1="100%" x2="0%" y2="0%">
-              <stop offset="0%" stopColor="#00f2ff" stopOpacity="0" />
-              <stop offset="50%" stopColor="#00f2ff" stopOpacity="1" />
-              <stop offset="100%" stopColor="#00f2ff" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-
-          {[...Array(12)].map((_, i) => {
-            const xBase = i * 120 + 50;
-            const path = `M ${xBase} 180 V ${140 - (i % 3) * 20} H ${xBase + 40} V ${40 + (i % 2) * 30}`;
-
-            return (
-              <g key={i}>
-                <path
-                  d={path}
-                  fill="none"
-                  stroke="#00f2ff"
-                  strokeWidth="0.5"
-                  className="opacity-20"
-                />
-
-                <motion.path
-                  d={path}
-                  fill="none"
-                  stroke="url(#line-grad)"
-                  strokeWidth="1.5"
-                  filter="url(#neon-glow)"
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  animate={{
-                    pathLength: [0, 1, 1],
-                    opacity: [0, 1, 0]
-                  }}
-                  transition={{
-                    duration: 3 + Math.random() * 2,
-                    repeat: Infinity,
-                    delay: i * 0.4,
-                    ease: "easeInOut"
-                  }}
-                />
-
-                <motion.circle
-                  cx={xBase + 40}
-                  cy={40 + (i % 2) * 30}
-                  r="2.5"
-                  fill="#fff"
-                  filter="url(#neon-glow)"
-                  animate={{
-                    scale: [1, 2, 1],
-                    opacity: [0.3, 1, 0.3],
-                    boxShadow: ["0 0 5px #00f2ff", "0 0 15px #00f2ff", "0 0 5px #00f2ff"]
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    delay: i * 0.4
-                  }}
-                />
-              </g>
-            );
-          })}
-        </svg>
-
-        <div className="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-[#00f2ff]/30 to-transparent blur-xl"></div>
-      </div>
+      {showEffect && Effect && <Effect />}
 
       <div className="container relative z-10 px-6 mx-auto text-center mt-20 flex flex-col items-center">
 

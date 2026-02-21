@@ -1,0 +1,57 @@
+@theme {
+  --color-code-glow: #00f2ff; /* El cian tecnológico de Automatizando */
+}
+
+.code-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+}
+
+.code-item {
+  position: absolute;
+  top: -100px;
+  left: var(--left);
+  font-size: var(--size);
+  color: var(--color-code-glow);
+  opacity: 0;
+  /* El desenfoque de movimiento se activa con la velocidad */
+  filter: drop-shadow(0 0 8px var(--color-code-glow));
+  /* Animación rápida con aceleración */
+  animation: code-fall var(--duration) infinite cubic-bezier(0.4, 0, 1, 1) var(--delay);
+  will-change: transform, opacity;
+}
+
+@keyframes code-fall {
+  0% {
+    transform: translateY(0) scale(0.8) skewY(10deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: var(--opacity);
+  }
+  80% {
+    opacity: var(--opacity);
+  }
+  100% {
+    transform: translateY(500px) scale(1.1) skewY(-10deg);
+    opacity: 0;
+  }
+}
+
+/* Gradiente inferior para integrar con el fondo negro del sitio */
+.code-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, #0a0a0a, transparent 40%);
+  z-index: 10;
+}
+
+/* Variación de brillo para algunas piezas */
+.code-item:nth-child(3n) {
+  color: #fff;
+  filter: drop-shadow(0 0 12px #fff);
+  z-index: 5;
+}
