@@ -28,7 +28,7 @@ export default function FeatureSection(
             <img
               src={image}
               alt={title}
-              className="relative rounded-2xl shadow-2xl object-cover w-full max-w-[500px] h-auto transform transition duration-500 group-hover:scale-[1.02]"
+              className="relative rounded-2xl shadow-2xl object-cover w-[385px] max-w-[500px] h-[240px] transform transition duration-500 group-hover:scale-[1.02]"
             />
           )}
         </div>
