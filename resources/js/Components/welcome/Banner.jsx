@@ -1,19 +1,19 @@
 import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
-import RocketButtonProMax from "../ButtonEfect/RockerButton";
 
 export default function Banner(
   { img,
     titleTop = "Impulsa tu negocio",
-    titleBottom = "con soluciones digitales efectivas.",
-    subtitle = "Diseñamos webs que venden, estrategias que convierten.",
+    titleBottom = "",
+    subtitle = "",
     buttonText = "Contáctanos",
     onButtonClick = () => { },
     height = "h-[360px] md:h-[470px]",
     showButton = true,
     positionImage = "center 70%",
     showEffect = true,
-    EffectComponent: Effect = null
+    EffectComponent: Effect = null,
+    ButtonComponent = null
 
   }) {
   return (
@@ -29,7 +29,7 @@ export default function Banner(
 
         }}
       >
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
+        <div className="absolute inset-0 bg-black/20 backdrop-blur-[0px]"></div>
       </div>
 
       {showEffect && Effect && <Effect />}
@@ -54,9 +54,9 @@ export default function Banner(
           {showButton && (
             <div className="flex items-center justify-center gap-5 -mt-6">
 
-              <RocketButtonProMax onClick={onButtonClick}>
+              <ButtonComponent onClick={onButtonClick}>
                 {buttonText}
-              </RocketButtonProMax>
+              </ButtonComponent>
 
             </div>
           )}

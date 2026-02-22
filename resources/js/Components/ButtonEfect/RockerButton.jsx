@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function RocketButtonProMax({ children, onClick }) {
+export default function RocketButton({ children, onClick }) {
   const [hover, setHover] = useState(false);
 
   return (

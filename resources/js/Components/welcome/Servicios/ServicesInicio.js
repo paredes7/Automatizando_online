@@ -1,7 +1,4 @@
-import FeatureSection from "./FeatureSection";
-
-export default function Services() {
-  const services = [
+ const ServicesInicio = [
     {
       title: "Beneficios de Automatizar",
       description: [
@@ -23,17 +20,4 @@ export default function Services() {
     },*/
   ];
 
-  return (
-    <section className="dark:bg-[#0a0a0a]">
-      {services.map((service, index) => (
-        <FeatureSection
-          key={index}
-          title={service.title}
-          description={service.description}
-          image={service.image}
-          reverse={service.reverse}
-        />
-      ))}
-    </section>
-  );
-}
+export default ServicesInicio;

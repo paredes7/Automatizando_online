@@ -2,6 +2,8 @@
 import Layout from '@/Layouts/MainLayout';
 import Banner from '@/Components/welcome/Banner';
 import { CodeRainEffect } from '@/Components/ButtonEfect/CodeRainEffect';
+import Servicios from '@/Components/welcome/Servicios/Servicios';
+import DataService from '@/Components/welcome/Servicios/DataService';
 
 export default function Services({ auth }) {
 
@@ -17,6 +19,8 @@ export default function Services({ auth }) {
                 positionImage='center 1%'
                 EffectComponent={CodeRainEffect}
             />
+
+            <Servicios services={DataService}/>
         </Layout>
     );
 }
