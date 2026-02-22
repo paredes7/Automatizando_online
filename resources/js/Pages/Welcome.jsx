@@ -18,7 +18,7 @@ export default function Welcome({ auth, categories, search, page, hasMore }) {
                 titleTop="Impulsa tu negocio"
                 titleBottom="con soluciones digitales efectivas."
                 subtitle="Diseñamos webs que venden, estrategias que convierten."
-                height="h-[360px] md:h-[410px]"
+                height="h-[390px] md:h-[410px]"
                 buttonText="Contactanos"
                 onButtonClick={() => window.location.href = '/Politicas'}
                 EffectComponent={CircuitEffect}
