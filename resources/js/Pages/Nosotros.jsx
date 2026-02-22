@@ -3,7 +3,7 @@ import Layout from '@/Layouts/MainLayout';
 import Banner from '@/Components/welcome/Banner';
 import { LegalRainEffect } from '@/Components/ButtonEfect/LegalRainEffect';
 import TestimonialPage from '@/Components/welcome/TestimonialCarrousel/TestimonialPage';
-import PhilosophySection from '@/Components/welcome/Nosotros/philosophySection';
+import PhilosophySection from '@/Components/welcome/Nosotros/PhilosophySection';
 
 export default function Nosotros({ auth }) {
 
