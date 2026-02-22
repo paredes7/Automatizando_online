@@ -1,14 +1,14 @@
- const ServicesInicio = [
+const ServicesInicio = [
     {
-      title: "Beneficios de Automatizar",
-      description: [
-        "Sitios veloces y optimizados",
-        "Acompañamiento personalizado",
-        "Experiencia en distintos rubros",
-        "Diseño 100% a medida"
-      ],
-      image: "https://res.cloudinary.com/dcyx3nqj5/image/upload/v1771539647/descarga_ip1yg8.jpg",
-      reverse: false // Imagen a la IZQUIERDA
+        title: "Beneficios de Automatizar",
+        description: [
+            "Sitios veloces y optimizados",
+            "Acompañamiento personalizado",
+            "Experiencia en distintos rubros",
+            "Diseño 100% a medida"
+        ],
+        image: "https://res.cloudinary.com/dcyx3nqj5/image/upload/v1771724046/Im%C3%A1genes__descubre_bancos_de_fotos_ilustraciones_vectores_y_v%C3%ADdeos_de_718_iqn7qv.jpg",
+        reverse: false // Imagen a la IZQUIERDA
     },
 
     /**{
@@ -18,6 +18,6 @@
       image: "https://res.cloudinary.com/dcyx3nqj5/image/upload/v1771539647/tienda_online_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1.jpg",
       reverse: true
     },*/
-  ];
+];
 
 export default ServicesInicio;

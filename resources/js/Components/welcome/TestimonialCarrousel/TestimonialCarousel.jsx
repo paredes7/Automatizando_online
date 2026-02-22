@@ -40,12 +40,11 @@ export default function TestimonialCarousel({ testimonials, autoPlay = true, int
     <section className="relative w-full h-[410px] md:h-[400px] flex items-center justify-center bg-[#030c1a]  py-24 px-4">
       <div className="relative w-full max-w-5xl mx-auto">
 
-        <div className="relative h-[430px] md:h-[400px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-         
+        <div className="relative h-[480px] md:h-[400px] rounded-3xl overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] ring-1 ring-white/5">
           <AnimatePresence initial={false} mode="wait">
             <motion.div
               key={`bg-${index}`}
-              className="absolute inset-0 bg-cover bg-center"
+              className="absolute inset-0 bg-cover bg-center brightness-[0.4] scale-105" 
               style={{ backgroundImage: `url(${testimonials[index].bgImage})` }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -80,28 +79,25 @@ export default function TestimonialCarousel({ testimonials, autoPlay = true, int
                 transition={{ duration: 0.5 }}
                 className="flex flex-col items-center text-center max-w-2xl"
               >
-                <FaQuoteLeft className="text-yellow-500/20 text-6xl mb-6" />
-
-                <p className="text-lg md:text-xl text-gray-200 leading-relaxed italic mb-10 px-4">
-                  {testimonials[index].message}
+                <FaQuoteLeft className="text-yellow-500/30 text-5xl md:text-6xl mb-6 drop-shadow-[0_0_10px_rgba(234,179,8,0.3)]" />
+                <p className="text-lg md:text-2xl text-white leading-relaxed italic mb-8 px-4 font-medium [text-shadow:_0_2px_10px_rgb(0_0_0_/_80%)]">                  {testimonials[index].message}
                 </p>
 
                 <div className="flex flex-col items-center">
-                  <div className="w-16 h-16 rounded-full border-2 border-yellow-500/40 p-1 mb-4">
-                    <img
-                      src={testimonials[index].avatar}
-                      alt={testimonials[index].author}
-                      className="w-full h-full rounded-full object-cover"
-                    />
+                  <div className="w-16 h-16 rounded-full border-2 border-yellow-500/60 p-1 mb-4 shadow-[0_0_20px_rgba(234,179,8,0.2)]">                    <img
+                    src={testimonials[index].avatar}
+                    alt={testimonials[index].author}
+                    className="w-full h-full rounded-full object-cover"
+                  />
                   </div>
 
-                  <h4 className="text-white font-bold tracking-[0.2em] uppercase text-xs md:text-sm">
+                  <h4 className="text-white font-black tracking-[0.25em] uppercase text-sm md:text-base drop-shadow-md">
                     {testimonials[index].author}
                   </h4>
 
                   <div className="w-8 h-[1px] bg-yellow-500 my-2" />
 
-                  <span className="text-yellow-400/80 text-[10px] uppercase tracking-widest">
+                  <span className="text-yellow-400 font-bold text-[11px] uppercase tracking-[0.3em] drop-shadow-sm">
                     {testimonials[index].role}
                   </span>
                 </div>

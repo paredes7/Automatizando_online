@@ -20,7 +20,7 @@ export default function Banner(
     <section className={`relative w-full ${height} overflow-hidden bg-[#0a0a0a] flex items-center justify-center`}>
 
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-center  brightness-[0.8] bg-no-repeat"
         style={{
           backgroundImage: `url(${img || "https://res.cloudinary.com/dcyx3nqj5/image/upload/v1771539647/descarga_ip1yg8.jpg"})`,
 
