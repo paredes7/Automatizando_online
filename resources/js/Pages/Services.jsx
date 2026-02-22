@@ -9,7 +9,8 @@ export default function Services({ auth }) {
 
     return (
         <Layout title="Servicios" auth={auth}>
-            <Banner
+            <div className='mt-9'>
+ <Banner
                 img="https://res.cloudinary.com/dcyx3nqj5/image/upload/v1771640879/6c76b409889af498e7718476dcdb7e82_a4ma0b.jpg"
                 titleTop="Nuestros Servicios"
                 titleBottom="No hacemos webs, creamos experiencias digitales"
@@ -19,6 +20,8 @@ export default function Services({ auth }) {
                 positionImage='center 1%'
                 EffectComponent={CodeRainEffect}
             />
+            </div>
+           
 
             <Servicios services={DataService}/>
         </Layout>

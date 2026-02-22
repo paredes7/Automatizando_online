@@ -13,7 +13,7 @@ export default function FeatureSection(
   ${reverse ? "md:flex-row-reverse" : "md:flex-row"} 
   items-center justify-between gap-3 md:gap-12 
   ${spaceVertical} 
-  px-6 md:px-14 max-w-7xl mx-auto`}
+  px-6 md:px-14 max-w-7xl mx-auto overflow-hidden`}
     >
       <motion.div
         className="w-full md:w-[390px] flex justify-center"
