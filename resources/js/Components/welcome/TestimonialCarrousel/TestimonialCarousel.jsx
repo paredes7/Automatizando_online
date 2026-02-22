@@ -37,7 +37,7 @@ export default function TestimonialCarousel({ testimonials, autoPlay = true, int
   };
 
   return (
-    <section className="relative w-full h-[450px] md:h-[400px] flex items-center justify-center bg-[#030c1a]  py-24 px-4">
+    <section className="mb-2 -mt-8 relative w-full h-auto md:h-auto flex items-center justify-center bg-[#030c1a] py-6 px-4">
       <div className="relative w-full max-w-5xl mx-auto">
 
         <div className="relative h-[480px] md:h-[400px] rounded-3xl overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] ring-1 ring-white/5">

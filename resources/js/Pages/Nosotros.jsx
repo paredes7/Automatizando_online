@@ -20,7 +20,9 @@ export default function Nosotros({ auth }) {
                 EffectComponent={LegalRainEffect}
             />
 
-            <TestimonialPage/>
+       
+                <TestimonialPage/>
+           
 
         </Layout>
     );

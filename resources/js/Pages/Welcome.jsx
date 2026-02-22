@@ -38,7 +38,8 @@ export default function Welcome({ auth, categories, search, page, hasMore }) {
                 ButtonComponent={RocketButtonProMax}
             />
 
-            <TestimonialPage/>
+             <TestimonialPage/>
+          
             <Products
                 categories={categories}
                 search={search}
