@@ -1,0 +1,109 @@
+/* resources/css/PhilosophyCards.css */
+
+/* Animación para el haz de luz del borde */
+@keyframes borderBeam {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.card-container {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* El haz de luz que gira detrás de la card */
+.border-beam {
+    position: absolute;
+    z-index: 0;
+    aspect-ratio: 1;
+    width: 200%;
+    top: -50%;
+    left: -50%;
+    background: conic-gradient(
+        from 0deg,
+        transparent 0%,
+        transparent 70%,
+        #3b82f6 85%, /* Azul principal */
+        #22d3ee 95%, /* Cyan */
+        transparent 100%
+    );
+    animation: borderBeam 6s linear infinite;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.card-container:hover .border-beam {
+    opacity: 1;
+}
+
+/* Efecto de cristal esmerilado */
+.glass-layer {
+    background: rgba(5, 17, 36, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Resplandor radial que sigue al hover */
+.inner-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(59, 130, 246, 0.15) 0%,
+        transparent 60%
+    );
+    opacity: 0.4;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.card-container:hover .inner-glow {
+    opacity: 1;
+}
+
+.card-number {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 4rem;
+    font-weight: 900;
+    color: rgba(255,255,255,0.25);
+    text-shadow: 0 0 40px rgba(59,130,246,0.4);
+    z-index: 20;
+}
+
+/* Animación */
+@keyframes numberDrop {
+    0% {
+        transform: translateY(-40px);
+        opacity: 0;
+        filter: blur(4px);
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+@keyframes subtleShine {
+    0% { transform: translateX(-20%); }
+    100% { transform: translateX(20%); }
+}
+
+.card-shine {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(
+        120deg,
+        rgba(255,255,255,0.05) 0%,
+        rgba(255,255,255,0.02) 40%,
+        transparent 70%
+    );
+    opacity: 0.6;
+    animation: subtleShine 6s ease-in-out infinite alternate;
+}
