@@ -14,7 +14,7 @@ export default function Services({ auth }) {
                 titleTop="Nuestros Servicios"
                 titleBottom="No hacemos webs, creamos experiencias digitales"
                 subtitle="Diseñamos y desarrollamos sitios web personalizados, optimizados para SEO y adaptados a tus necesidades comerciales."
-                height="h-[360px] md:h-[440px] mt-9 "
+                height="h-[360px] md:h-[440px] "
                 showButton={false}
                 positionImage='center 1%'
                 EffectComponent={CodeRainEffect}
