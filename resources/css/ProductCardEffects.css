@@ -1,0 +1,46 @@
+/* Animación haz giratorio */
+@keyframes borderBeam {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.card-container {
+    position: relative;
+    border-radius: 16px;
+    padding: 1px; /* 🔥 esto crea el marco */
+    overflow: hidden;
+}
+
+/* Beam */
+.border-beam {
+    position: absolute;
+    inset: 0;
+    filter: blur(20px);
+    border-radius: 16px;
+    background: conic-gradient(
+        from 0deg,
+        transparent 0%,
+        transparent 70%,
+        #3b82f6 85%,
+        #22d3ee 95%,
+        transparent 100%
+    );
+    animation: borderBeam 4s linear infinite;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* Activación */
+.card-container:hover .border-beam {
+    opacity: 1;
+}
+
+/* Glass interno */
+.glass-layer {
+    position: relative;
+    z-index: 2;
+    border-radius: 14px; /* 🔥 menor que container */
+    background: rgba(5, 17, 36, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}

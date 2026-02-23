@@ -4,8 +4,9 @@ import Banner from '@/Components/welcome/Banner';
 import { LegalRainEffect } from '@/Components/ButtonEfect/LegalRainEffect';
 import TestimonialPage from '@/Components/welcome/TestimonialCarrousel/TestimonialPage';
 import PhilosophySection from '@/Components/welcome/Nosotros/PhilosophySection';
+import ProductCarousel from '@/Components/welcome/Nosotros/ProductCarousel';
 
-export default function Nosotros({ auth }) {
+export default function Nosotros({ categories, auth }) {
 
     return (
         <Layout title="Nosotros" auth={auth}>
@@ -22,6 +23,8 @@ export default function Nosotros({ auth }) {
             />
 
             <PhilosophySection />
+
+            <ProductCarousel categories={categories} />
             <TestimonialPage />
 
 

@@ -17,8 +17,11 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ReportController;
 use Inertia\Inertia;
 
+Route::get('/', function () {
+        return Inertia::render('Welcome');
+    })->name('welcome');
 
-Route::get('/', [ProductController::class, 'index'])->name('welcome');
+Route::get('/nosotros', [ProductController::class, 'index'])->name('nosotros');
 
 Route::get('/Contacto', function () {
         return Inertia::render('Contacto');
@@ -38,9 +41,12 @@ Route::prefix('carrito')->group(function () {
     Route::delete('/clear', [CartController::class, 'clear'])->name('carrito.clear');
 });
 
+Route::get('/', function () {
+        return Inertia::render('Welcome');
+    })->name('welcome');
 
     Route::get('/checkout', function () {
-        return Inertia::render('checkout');
+        return Inertia::render('Checkout');
     })->name('checkout');
 
      Route::get('/Politicas', function () {
@@ -55,9 +61,6 @@ Route::prefix('carrito')->group(function () {
         return Inertia::render('Services');
     })->name('servicios');
 
-    Route::get('/nosotros', function () {
-        return Inertia::render('Nosotros');
-    })->name('nosotros');
 
     // Endpoint para crear pedido
     Route::post('/orders/store', [PedidosController::class, 'store'])->name('orders.store');

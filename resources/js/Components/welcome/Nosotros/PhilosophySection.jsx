@@ -52,18 +52,18 @@ export default function PhilosophySection() {
                                     {String(index + 1).padStart(2, "0")}
                                 </motion.span>
 
-                                <div className="relative mb-4">
+                                <div className="relative mb-2 md:mb-4">
                                     <div className={`absolute inset-0 blur-3xl opacity-30 bg-gradient-to-br ${item.color}`} />
                                     <div className={`p-6 rounded-2xl bg-gradient-to-br ${item.color} relative inline-flex bg-[#0a1a35] border border-white/10 text-3xl shadow-2xl transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6`}>
-                                        <Icon className="w-8 h-8 text-white stroke-[1.5]" />
+                                        <Icon className="w-5 h-5 md:h-8 md:w-8 text-white stroke-[1.5]" />
                                     </div>
                                 </div>
 
-                                <h3 className="text-lg font-black text-white tracking-[0.15em] uppercase italic">
+                                <h3 className="text-[16px] md:text-lg font-black text-white tracking-[0.15em] uppercase italic">
                                     {item.title}
                                 </h3>
 
-                                <p className="text-gray-400 leading-relaxed text-lg font-light italic">
+                                <p className="text-gray-300 leading-relaxed text-[15px] md:text-lg font-light">
                                     {item.text}
                                 </p>
 
