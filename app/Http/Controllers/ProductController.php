@@ -78,12 +78,11 @@ class ProductController extends Controller
       ->paginate($perPage)
       ->withQueryString();
 
-
     return Inertia::render("Tienda", [
       "products" => $products,
       "filters" => [
         "search" => $request->query("search", ""),
-        "sort" => $request->query("sort", "latest"), // ¡Agrega esto!
+        "sort" => $request->query("sort", "latest"),
         "min_price" => $request->query("min_price", ""),
         "max_price" => $request->query("max_price", ""),
       ],
@@ -91,20 +90,24 @@ class ProductController extends Controller
   }
 
   public function getAllProductsJson(Request $request)
-{
+  {
     $perPage = $request->query("per_page", 12);
-    
-    // Aplicamos los filtros de búsqueda y orden que ya programamos
+
     $query = Product::where("available", 1);
     $query = $this->applyFilters($query, $request);
 
-    $products = $query->with(['multimedia', 'category:id,name'])
-        ->paginate($perPage)
-        ->withQueryString();
+    $products = $query
+      ->with([
+        "multimedia" => function ($q) {
+          $q->orderBy("sort_order", "asc");
+        },
+        "category:id,name",
+      ])
+      ->paginate($perPage)
+      ->withQueryString();
 
-    // Importante: Devolver siempre response()->json() en esta ruta específica
-    return response()->json($products);
-}
+    return response()->json($products)->header("X-Inertia", null);
+  }
 
   /**
    * metodo aparte para manejar la logica de busqueda y filtrado

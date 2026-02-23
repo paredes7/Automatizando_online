@@ -43,7 +43,11 @@ export default function TiendaShow({ initialProducts, initialFilters }) {
         try {
             // Usamos axios para pedir la URL específica de la página (ej: /tienda/json?page=2)
             const response = await axios.get(url, {
-                params: filters // Mantenemos búsqueda y orden actuales
+                params: filters, // Mantenemos búsqueda y orden actuales
+                headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'Accept': 'application/json'
+            }
                 
             });
             setProducts(response.data);
