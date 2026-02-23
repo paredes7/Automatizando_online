@@ -32,9 +32,6 @@ export default function StoreCard({ product }) {
                 </h3>
                 <div className="flex justify-between items-end">
                     <div>
-                        <p className="text-gray-500 text-xs line-through mb-1">
-                            S/ {(product.price * 1.2).toFixed(2)}
-                        </p>
                         <p className="text-white text-2xl font-black">
                             S/ {product.price}
                         </p>

@@ -38,14 +38,17 @@ export default function TiendaShow({ initialProducts, initialFilters }) {
         setLoading(true);
         window.scrollTo({ top: 0, behavior: 'smooth' }); // Feedback de usuario
 
+        const relativeUrl = new URL(url).pathname + new URL(url).search; // Extraemos la parte relativa de la URL
+
         try {
             // Usamos axios para pedir la URL específica de la página (ej: /tienda/json?page=2)
             const response = await axios.get(url, {
                 params: filters // Mantenemos búsqueda y orden actuales
+                
             });
             setProducts(response.data);
         } catch (error) {
-            console.error("Error al paginar:", error);
+            console.error("Error al paginar en produccion:", error);
         } finally {
             setLoading(false);
         }
