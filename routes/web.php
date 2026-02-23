@@ -25,7 +25,7 @@ Route::get('/nosotros', [ProductController::class, 'index'])->name('nosotros');
 
 Route::get('/tienda', [ProductController::class, 'getAllProducts'])->name('tienda.index');
 
-Route::get('/tienda/json', [ProductController::class, 'getAllProducts'])->name('tienda.json');
+Route::get('/tienda/json', [ProductController::class, 'getAllProductsJson'])->name('tienda.json');
 
 Route::get('/Contacto', function () {
         return Inertia::render('Contacto');
