@@ -25,8 +25,6 @@ function CategorySlider({ category }) {
     const lastX = useRef(0);
 
     // 🔁 Animación de desplazamiento automático
-
-
     useEffect(() => {
         const slider = sliderRef.current;
         let animationFrame;
@@ -71,7 +69,6 @@ function CategorySlider({ category }) {
         isDragging.current = false;
     };
 
-    // 🔁 duplicamos productos para loop infinito
     const productsLoop = [...category.products, ...category.products];
 
     return (

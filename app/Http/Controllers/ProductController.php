@@ -11,6 +11,7 @@ use App\Models\Cotizacion;
 use App\Models\CotizacionProducto;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\In;
 
 class ProductController extends Controller
 {
@@ -57,7 +58,97 @@ class ProductController extends Controller
     ]);
   }
 
+  /**
+   * funcion que me muestra todos los productos de todas las categorias con su multimedia
+   */
+  public function getAllProducts(Request $request)
+  {
+    $perPage = $request->query("per_page", 12);
 
+    $query = Product::where("available", 1);
+    $query = $this->applyFilters($query, $request);
+
+    $products = $query
+      ->with([
+        "multimedia" => function ($query) {
+          $query->orderBy("sort_order", "asc");
+        },
+        "category:id,name",
+      ])
+      ->paginate($perPage)
+      ->withQueryString();
+
+   // 🚀 ESTO ES LO QUE FALTA:
+    if ($request->wantsJson() || $request->ajax()) {
+        return response()->json($products);
+    }
+
+    return Inertia::render("Tienda", [
+      "products" => $products,
+      "filters" => [
+        "search" => $request->query("search", ""),
+        "sort" => $request->query("sort", "latest"), // ¡Agrega esto!
+        "min_price" => $request->query("min_price", ""),
+        "max_price" => $request->query("max_price", ""),
+      ],
+    ]);
+  }
+
+  /**
+   * metodo aparte para manejar la logica de busqueda y filtrado
+   */
+  private function applyFilters($query, $request)
+  {
+    $search = $request->query("search");
+
+    $sort = $request->query("sort", "latest"); // valor por defecto 'latest'
+
+    $query
+      ->when($search, function ($q) use ($search) {
+        $q->where(function ($sub) use ($search) {
+          $sub
+            ->where("name", "like", "%{$search}%")
+
+            ->orWhereHas("category", function ($catQuery) use ($search) {
+              $catQuery->where("name", "like", "%{$search}%");
+            });
+
+          if (is_numeric($search)) {
+            $sub->orWhere("price", "<=", $search);
+          }
+        });
+      })
+
+      ->when($request->query("min_price"), function ($q, $min) {
+        $q->where("price", ">=", $min);
+      })
+      ->when($request->query("max_price"), function ($q, $max) {
+        $q->where("price", "<=", $max);
+      });
+
+    switch ($sort) {
+      case "name_asc":
+        return $query->orderBy("name", "asc");
+        break;
+      case "name_desc":
+        return $query->orderBy("name", "desc");
+        break;
+      case "price_asc":
+        return $query->orderBy("price", "asc");
+        break;
+      case "price_desc":
+        return $query->orderBy("price", "desc");
+        break;
+      case "oldest":
+        return $query->orderBy("created_at", "asc");
+        break;
+      default:
+        return $query->orderBy("created_at", "desc");
+        break;
+    }
+
+    return $query;
+  }
 
   public function show($slug, $id)
   {
