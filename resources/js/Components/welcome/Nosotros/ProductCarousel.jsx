@@ -61,7 +61,7 @@ function CategorySlider({ category }) {
         const currentX = e.touches[0].clientX;
         const delta = currentX - lastX.current;
 
-        scrollAmountRef.current -= delta * 0.3;
+        scrollAmountRef.current -= delta * 1;
         sliderRef.current.scrollLeft = scrollAmountRef.current;
 
         lastX.current = currentX;
