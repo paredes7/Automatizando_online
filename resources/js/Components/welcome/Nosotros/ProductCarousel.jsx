@@ -18,21 +18,26 @@ export default function ProductCarousel({ categories }) {
 
 function CategorySlider({ category }) {
     const sliderRef = useRef(null);
+    const speedRef = useRef(0.8); // 🔥 velocidad (ajústala
+    const scrollAmountRef = useRef(0);
+
+    const isDragging = useRef(false);
+    const lastX = useRef(0);
+
+    // 🔁 Animación de desplazamiento automático
+
 
     useEffect(() => {
         const slider = sliderRef.current;
         let animationFrame;
-        let scrollAmount = 0;
-        const speed = 0.8; // 🔥 velocidad (ajústala)
 
         const animate = () => {
-            if (slider) {
-                scrollAmount += speed;
-                slider.scrollLeft = scrollAmount;
+            if (slider && !isDragging.current) {
+                scrollAmountRef.current += speedRef.current;
+                slider.scrollLeft = scrollAmountRef.current;
 
-                // 🔁 Reinicio infinito
-                if (scrollAmount >= slider.scrollWidth / 2) {
-                    scrollAmount = 0;
+                if (scrollAmountRef.current >= slider.scrollWidth / 2) {
+                    scrollAmountRef.current = 0;
                     slider.scrollLeft = 0;
                 }
             }
@@ -41,9 +46,30 @@ function CategorySlider({ category }) {
         };
 
         animate();
-
         return () => cancelAnimationFrame(animationFrame);
     }, []);
+
+
+    const handleTouchStart = (e) => {
+        isDragging.current = true;
+        lastX.current = e.touches[0].clientX;
+    };
+
+    const handleTouchMove = (e) => {
+        if (!isDragging.current) return;
+
+        const currentX = e.touches[0].clientX;
+        const delta = currentX - lastX.current;
+
+        scrollAmountRef.current -= delta;
+        sliderRef.current.scrollLeft = scrollAmountRef.current;
+
+        lastX.current = currentX;
+    };
+
+    const handleTouchEnd = () => {
+        isDragging.current = false;
+    };
 
     // 🔁 duplicamos productos para loop infinito
     const productsLoop = [...category.products, ...category.products];
@@ -61,7 +87,10 @@ function CategorySlider({ category }) {
 
             <div
                 ref={sliderRef}
-                className="flex gap-1 md:gap-2 px-6 overflow-hidden"
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+                className="flex gap-1 md:gap-2 px-6 overflow-hidden cursor-grab active:cursor-grabbing select-none"
             >
                 {productsLoop.map((product, index) => (
                     <a
