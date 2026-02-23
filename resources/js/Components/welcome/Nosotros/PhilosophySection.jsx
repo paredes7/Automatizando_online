@@ -63,7 +63,7 @@ export default function PhilosophySection() {
                                     {item.title}
                                 </h3>
 
-                                <p className="text-gray-300 leading-relaxed text-[15px] md:text-lg font-light">
+                                <p className="text-gray-300 leading-relaxed text-[16px] md:text-lg font-light">
                                     {item.text}
                                 </p>
 
