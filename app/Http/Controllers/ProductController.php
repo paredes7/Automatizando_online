@@ -89,7 +89,7 @@ class ProductController extends Controller
     ]);
   }
 
-  public function getAllProductsJson(Request $request)
+  /**public function getAllProductsJson(Request $request)
   {
     $perPage = $request->query("per_page", 12);
 
@@ -107,7 +107,7 @@ class ProductController extends Controller
       ->withQueryString();
 
     return response()->json($products)->header("X-Inertia", null);
-  }
+  }*/
 
   /**
    * metodo aparte para manejar la logica de busqueda y filtrado

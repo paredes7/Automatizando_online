@@ -1,61 +1,33 @@
 import { router } from '@inertiajs/react';
 import StoreHeader from './StoreHeader';
 import StoreCard from './StoreCard';
-import { useState } from 'react';
-import { productService } from '@/Services/productService';
 import Pagination from './Pagination';
 
-export default function TiendaShow({ initialProducts, initialFilters }) {
-    // Manejamos los productos y filtros en el estado local para mayor velocidad
-    const [products, setProducts] = useState(initialProducts);
-    const [filters, setFilters] = useState(initialFilters);
-    const [loading, setLoading] = useState(false);
+export default function TiendaShow({ products, filters }) {
 
     // Definición correcta: extraemos el array del objeto paginado de Laravel
     const productsList = products?.data || [];
 
-    const updateFilters = async (newFilters) => {
-        const updatedFilters = { ...filters, ...newFilters };
-        setFilters(updatedFilters);
-        setLoading(true);
-
-        try {
-            // Petición asíncrona mediante el servicio de Axios
-            const data = await productService.getAll(updatedFilters);
-            setProducts(data);
-        } catch (error) {
-            console.error("Error al actualizar productos:", error);
-        } finally {
-            setLoading(false);
-        }
+    const performQuery = (newFilters) => {
+        router.get(route('tienda.index'),
+            { ...filters, ...newFilters },
+            {
+                preserveState: true, // Mantiene el scroll y el texto del input
+                replace: true,       // No llena el historial del navegador al escribir
+                preserveScroll: true // Evita que la página salte al inicio bruscamente
+            }
+        );
     };
 
 
     // Función para manejar el cambio de página
-    const handlePageChange = async (url) => {
+    const handlePageChange = (url) => {
         if (!url) return;
-
-        setLoading(true);
-        window.scrollTo({ top: 0, behavior: 'smooth' }); // Feedback de usuario
-
-        const relativeUrl = new URL(url).pathname + new URL(url).search; // Extraemos la parte relativa de la URL
-
-        try {
-            // Usamos axios para pedir la URL específica de la página (ej: /tienda/json?page=2)
-            const response = await axios.get(url, {
-                params: filters, // Mantenemos búsqueda y orden actuales
-                headers: {
-                'X-Requested-With': 'XMLHttpRequest',
-                'Accept': 'application/json'
-            }
-                
-            });
-            setProducts(response.data);
-        } catch (error) {
-            console.error("Error al paginar en produccion:", error);
-        } finally {
-            setLoading(false);
-        }
+        // Al usar router.get sobre una URL de Laravel, Inertia ya sabe qué hacer
+        router.visit(url, {
+            preserveState: true,
+            preserveScroll: false // Aquí sí queremos que suba al inicio de la tienda
+        });
     };
 
     return (
@@ -63,36 +35,32 @@ export default function TiendaShow({ initialProducts, initialFilters }) {
             <div className="max-w-7xl mx-auto">
                 <StoreHeader
                     filters={filters}
-                    onSearchChange={(val) => updateFilters({ search: val })}
-                    onSortChange={(val) => updateFilters({ sort: val })}
+                    onSearchChange={(val) => performQuery({ search: val })}
+                    onSortChange={(val) => performQuery({ sort: val })}
                 />
 
-                {loading ? (
-                    <div className="flex justify-center py-20">
-                        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+                {/* 🛡️ CORRECCIÓN: Eliminamos la referencia a 'loading' que causaba el error */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                    {productsList.map(product => (
+                        <StoreCard key={product.id} product={product} />
+                    ))}
+                </div>
+
+                {/* Mensaje de no resultados */}
+                {productsList.length === 0 && (
+                    <div className="text-center py-20">
+                        <p className="text-gray-400 text-xl font-medium">
+                            No encontramos productos que coincidan con tu búsqueda.
+                        </p>
                     </div>
-                ) : (
-                    <>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-                            {productsList.map(product => (
-                                <StoreCard key={product.id} product={product} />
-                            ))}
-                        </div>
+                )}
 
-                        {/* CORRECCIÓN: Usamos productsList.length directamente */}
-                        {productsList.length === 0 && (
-                            <div className="text-center py-20">
-                                <p className="text-gray-400 text-xl font-medium">
-                                    No encontramos productos que coincidan con tu búsqueda.
-                                </p>
-                            </div>
-                        )}
-
-                        {/* Paginación */}
-                        {products?.links && (
-                            <Pagination links={products.links} onPageChange={handlePageChange} />
-                        )}
-                    </>
+                {/* Paginación nativa vinculada a los links de Laravel */}
+                {products?.links && (
+                    <Pagination
+                        links={products.links}
+                        onPageChange={handlePageChange}
+                    />
                 )}
             </div>
         </div>

@@ -19,7 +19,7 @@ export default function Tienda({ auth, products, filters }) {
                 EffectComponent={LegalRainEffect}
             />
 
-            <TiendaShow initialProducts={products} initialFilters={filters} />
+            <TiendaShow products={products} filters={filters} />
 
 
         </Layout>
