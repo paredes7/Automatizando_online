@@ -12,6 +12,7 @@ use App\Models\CotizacionProducto;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\In;
+use Illuminate\Pagination\Paginator;
 
 class ProductController extends Controller
 {
@@ -63,6 +64,12 @@ class ProductController extends Controller
    */
   public function getAllProducts(Request $request)
   {
+       if (app()->environment('production')) {
+        Paginator::currentPathResolver(function () {
+            return 'https://' . request()->getHost() . request()->getPathInfo();
+        });
+    }
+
     $perPage = $request->query("per_page", 12);
 
     $query = Product::where("available", 1);

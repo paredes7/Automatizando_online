@@ -3,6 +3,7 @@ import React from 'react';
 export default function Pagination({ links, onPageChange }) {
     // Si solo hay una página, no mostramos nada
     if (links.length <= 3) return null;
+    console.log("Links de paginación recibidos:", links);
 
     return (
         <div className="flex flex-wrap justify-center gap-2 mt-12 pb-10">
