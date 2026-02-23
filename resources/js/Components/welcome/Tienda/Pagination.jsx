@@ -6,7 +6,7 @@ export default function Pagination({ links, onPageChange }) {
     console.log("Links de paginación recibidos:", links);
 
     return (
-        <div className="flex flex-wrap justify-center gap-2 mt-12 pb-10">
+        <div className="flex flex-wrap justify-center gap-2 mt-10 pb-2">
             {links.map((link, index) => {
                 // Laravel devuelve etiquetas como "&laquo; Previous" o "Next &raquo;"
                 // y los números de página.
