@@ -1,8 +1,9 @@
-import { Link } from "@inertiajs/react";
-import { useState, useEffect, useMemo } from "react";
+import { Link, usePage } from "@inertiajs/react";
+import { useState, useEffect, useMemo} from "react";
 import NavLink from "./Header/Navlink";
 import { NAV_LINKS } from "./Header/nav-config";
-import { User, ShoppingCart, Menu, X } from "lucide-react";
+import { User, ShoppingCart, Menu, X , LogOut} from "lucide-react";
+import UserMenu from "./Header/UserMenu";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -26,15 +27,14 @@ export default function Header() {
       <header className={headerClasses}>
         <div className="container px-6 mx-auto">
           <div className="flex items-center justify-between lg:grid lg:grid-cols-3">
-            
+
             <div className="flex justify-start">
               <Link href="/" className="transition-all hover:scale-105 active:scale-95">
                 <img
                   src="https://res.cloudinary.com/dcyx3nqj5/image/upload/v1771532553/Captura_de_pantalla_2026-02-19_161704-removebg-preview_kgxbzn.png"
-                  alt="InnoClinica Logo"
-                  className={`transition-all duration-500 object-contain ${
-                    isScrolled ? "h-8" : "h-10"
-                  }`}
+                  alt="Automatizando Online Logo"
+                  className={`transition-all duration-500 object-contain ${isScrolled ? "h-8" : "h-10"
+                    }`}
                 />
               </Link>
             </div>
@@ -52,9 +52,9 @@ export default function Header() {
             </nav>
 
             <div className="flex items-center justify-end gap-3 md:gap-6">
-              <button className="hidden transition-all text-white/70 hover:text-yellow-500 sm:block hover:scale-110">
-                <User className="w-5 h-5" />
-              </button>
+              <div className="hidden sm:block">
+                <UserMenu />
+              </div>
 
               <button className="relative p-2.5 text-black transition-all bg-yellow-500 rounded-lg active:scale-90 hover:bg-yellow-400 shadow-[0_0_15px_rgba(234,179,8,0.3)]">
                 <ShoppingCart className="w-5 h-5" />
@@ -74,9 +74,9 @@ export default function Header() {
         </div>
       </header>
 
-      <MobileMenu 
-        isOpen={mobileMenuOpen} 
-        onClose={() => setMobileMenuOpen(false)} 
+      <MobileMenu
+        isOpen={mobileMenuOpen}
+        onClose={() => setMobileMenuOpen(false)}
         isScrolled={isScrolled}
       />
     </>
@@ -84,12 +84,12 @@ export default function Header() {
 }
 
 function MobileMenu({ isOpen, onClose, isScrolled }) {
+  const { auth } = usePage().props;
+  const user = auth.user;
+
   return (
     <div className="lg:hidden">
-      <div 
-        className={`fixed inset-0 backdrop-blur-sm z-[80] transition-opacity duration-600 ${
-          isOpen ? "opacity-0" : "opacity-0 pointer-events-none"
-        }`}
+      <div className={`fixed inset-0 backdrop-blur-sm z-[80] transition-opacity duration-600 ${isOpen ? "opacity-0" : "opacity-0 pointer-events-none"}`}
         onClick={onClose}
       />
 
@@ -122,14 +122,64 @@ function MobileMenu({ isOpen, onClose, isScrolled }) {
               <div className="w-1.5 h-1.5 rounded-full bg-yellow-500 opacity-0 group-hover:opacity-100 transition-all transform scale-0 group-hover:scale-100" />
             </Link>
           ))}
-          
-          <Link
-            href="/login"
-            className="flex items-center gap-3 px-8 py-3 text-[13px] font-bold tracking-widest text-yellow-500 uppercase transition-all rounded-full hover:bg-yellow-500 hover:text-white w-max"
-          >
-            <User className="w-4 h-4" />
-            Mi Cuenta
-          </Link>
+
+          {/* Sección de Cuenta en Responsive */}
+          <div className="mt-1 pt-2 border-t border-white/5 flex flex-col gap-4">
+
+            {user ? (
+              /* MODO: USUARIO AUTENTICADO */
+              <div className="flex flex-col gap-4">
+                <div className="flex flex-col text-center">
+                  <p className="text-yellow-500 text-[10px] font-black uppercase tracking-[0.2em] mb-1">
+                    Cuenta Activa
+                  </p>
+                  <p className="text-white text-lg font-bold">{user.name}</p>
+                  <p className="text-white text-sm font-normal">{user.email}</p>
+                </div>
+
+                <Link
+                  href="/logout"
+                  method="post"
+                  as="button"
+                  onClick={onClose}
+                  className="flex items-center justify-center gap-2 w-full py-3
+                   mx-auto w-full max-w-[200px] 
+                   bg-red-500/10 border border-red-500/20 rounded-xl
+                    text-red-500 text-[14px] font-black uppercase
+                     tracking-widest hover:bg-red-500/20 transition-all"
+                >
+                  <LogOut className="w-5 h-5" />
+                  Cerrar Sesión
+                </Link>
+              </div>
+            ) : (
+              <div className="flex flex-col gap-2">
+                <Link
+                  href="/login"
+                  onClick={onClose}
+                  className="flex items-center justify-center gap-2 
+    mx-auto w-full max-w-[200px] 
+    py-3 bg-yellow-500 rounded-xl 
+    text-black text-[15px] font-black uppercase tracking-widest 
+    hover:bg-yellow-400 transition-all active:scale-95"
+                >
+                  <User className="w-5 h-5" />
+                  Iniciar Sesión
+                </Link>
+
+                <Link
+                  href="/register"
+                  onClick={onClose}
+                  className="flex items-center justify-center gap-2 
+  mx-auto w-full max-w-[200px] 
+  py-3 bg-yellow-500 rounded-xl 
+  text-black text-[15px] font-black uppercase tracking-widest 
+  hover:bg-yellow-400 transition-all active:scale-95"                >
+                  Registrarse
+                </Link>
+              </div>
+            )}
+          </div>
         </nav>
       </div>
     </div>
