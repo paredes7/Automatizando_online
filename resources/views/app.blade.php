@@ -7,7 +7,7 @@
 
     <title inertia>{{ config('app.name', 'Automatizando') }}</title>
 
-    <link rel="icon" href="https://res.cloudinary.com/dcyx3nqj5/image/upload/v1771539647/descarga_ip1yg8.jpg" type="image/png">
+    <link rel="icon" href="https://res.cloudinary.com/dcyx3nqj5/image/upload/v1772163185/Captura_de_pantalla_2026-02-21_114520-removebg-preview_rlvuye.png" type="image/png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,14 +15,14 @@
 
     <meta property="og:title" content="Automatizando | Soluciones Digitales" />
     <meta property="og:description" content="Impulsa tu negocio con soluciones digitales efectivas, desarrollo web y automatización." />
-    <meta property="og:image" content="https://res.cloudinary.com/dcyx3nqj5/image/upload/v1771539647/descarga_ip1yg8.jpg" />
+    <meta property="og:image" content="https://res.cloudinary.com/dcyx3nqj5/image/upload/v1772163185/Captura_de_pantalla_2026-02-21_114520-removebg-preview_rlvuye.png" />
     <meta property="og:url" content="{{ url('/') }}" />
     <meta property="og:type" content="website" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Automatizando" />
     <meta name="twitter:description" content="Diseñamos webs que venden y estrategias que convierten." />
-    <meta name="twitter:image" content="https://res.cloudinary.com/dcyx3nqj5/image/upload/v1771539647/descarga_ip1yg8.jpg" />
+    <meta name="twitter:image" content="https://res.cloudinary.com/dcyx3nqj5/image/upload/v1772163185/Captura_de_pantalla_2026-02-21_114520-removebg-preview_rlvuye.png" />
 
     @routes
     @viteReactRefresh
