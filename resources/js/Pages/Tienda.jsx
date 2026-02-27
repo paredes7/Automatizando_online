@@ -6,6 +6,9 @@ import TiendaShow from '@/Components/welcome/Tienda/TiendaShow';
 
 export default function Tienda({ auth, products, filters }) {
 
+    console.log("products:", products);
+    console.log("filters:", filters);
+
     return (
         <Layout title="Tienda" auth={auth}>
             <Banner

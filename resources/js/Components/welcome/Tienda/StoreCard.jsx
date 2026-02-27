@@ -4,6 +4,14 @@ import "../../../../css/ProductCardEffects.css";
 export default function StoreCard({ product }) {
     const mainImage = product.multimedia?.[0]?.url || "/placeholder.jpg";
 
+    const handleProductClick = () => {
+        if (product.link) {
+            window.open(product.link, '_blank');
+        }else {
+            alert("No hay un enlace disponible para este producto.");
+        }
+    };
+
     return (
         <div className="card-container group bg-[#051124] border border-white/5 rounded-2xl overflow-hidden hover:border-blue-500/30 transition-all duration-500 shadow-xl flex flex-col h-full">
           
@@ -18,10 +26,10 @@ export default function StoreCard({ product }) {
                         className=" w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
-                        <button className="bg-white text-black p-3 rounded-full hover:bg-blue-500 hover:text-white transition-colors">
-                            <ShoppingCart size={20} />
-                        </button>
-                        <button className="bg-white/20 backdrop-blur-md text-white p-3 rounded-full hover:bg-white/40 transition-colors">
+                      
+                        <button
+                        onClick={handleProductClick}
+                         className="bg-white/20 backdrop-blur-md text-white p-3 rounded-full hover:bg-white/40 transition-colors">
                             <Eye size={20} />
                         </button>
                     </div>
