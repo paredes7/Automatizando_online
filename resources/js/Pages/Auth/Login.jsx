@@ -35,7 +35,7 @@ export default function Login({ status, canResetPassword }) {
                 {/* Email */}
                 <div>
                     <div className="relative group">
-                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 group-focus-within:text-amber-500 transition-colors">
+                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 group-focus-within:text-blue-500 transition-colors">
                             <Mail size={19} />
                         </div>
                         <TextInput
@@ -43,7 +43,7 @@ export default function Login({ status, canResetPassword }) {
                             type="email"
                             placeholder="Tu correo"
                             value={data.email}
-                            className="block w-full pl-11 bg-slate-900/50 border-slate-700 text-white focus:border-amber-500 focus:ring-amber-500/20 rounded-xl py-3"
+                            className="block w-full pl-11 bg-slate-900/50 border-slate-700 text-white focus:border-blue-500 focus:ring-amber-500/20 rounded-xl py-3"
                             autoComplete="username"
                             onChange={(e) => setData('email', e.target.value)}
                         />
@@ -54,7 +54,7 @@ export default function Login({ status, canResetPassword }) {
                 {/* Password */}
                 <div>
                     <div className="relative group">
-                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 group-focus-within:text-amber-500 transition-colors">
+                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 group-focus-within:text-blue-500 transition-colors">
                             <Lock size={19} />
                         </div>
                         <TextInput
@@ -62,7 +62,7 @@ export default function Login({ status, canResetPassword }) {
                             type="password"
                             placeholder="Tu contraseña"
                             value={data.password}
-                            className="block w-full pl-11 bg-slate-900/50 border-slate-700 text-white focus:border-amber-500 focus:ring-amber-500/20 rounded-xl py-3"
+                            className="block w-full pl-11 bg-slate-900/50 border-slate-700 text-white focus:border-blue-500 focus:ring-amber-500/20 rounded-xl py-3"
                             autoComplete="current-password"
                             onChange={(e) => setData('password', e.target.value)}
                         />
@@ -83,7 +83,7 @@ export default function Login({ status, canResetPassword }) {
                     {canResetPassword && (
                         <Link
                             href={route('password.request')}
-                            className="text-sm text-amber-500 hover:text-amber-400 underline underline-offset-4 font-medium"
+                            className="text-sm text-blue-500 hover:text-blue-400 underline underline-offset-4 font-medium"
                         >
                             ¿Olvidaste tu contraseña?
                         </Link>
@@ -92,7 +92,7 @@ export default function Login({ status, canResetPassword }) {
 
                 <button
                     disabled={processing}
-                    className="w-full flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-3.5 rounded-xl transition-all shadow-lg shadow-amber-500/20"
+                    className="w-full flex items-center justify-center gap-2 hover:text-white bg-blue-500 hover:bg-blue-600 text-slate-950 font-bold py-3.5 rounded-xl transition-all shadow-lg shadow-blue-500/20"
                 >
                     <LogIn size={20} />
                     INGRESAR
@@ -110,7 +110,7 @@ export default function Login({ status, canResetPassword }) {
                         ¿No tienes una cuenta?{' '}
                         <Link
                             href={route('register')}
-                            className="text-amber-500 font-bold hover:text-amber-400 underline underline-offset-4"
+                            className="text-blue-500 font-bold hover:text-blue-400 underline underline-offset-4"
                         >
                             Regístrate aquí
                         </Link>

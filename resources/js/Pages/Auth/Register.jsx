@@ -25,7 +25,7 @@ export default function Register() {
             <Head title="Crear Cuenta" />
 
           
-            <div className="mb-8 text-center">
+            <div className="mb-4 text-center">
                 <h2 className="text-3xl font-extrabold text-white tracking-tight">
                     Bienvenido
                 </h2>
@@ -38,7 +38,7 @@ export default function Register() {
                 
                 <div className="space-y-1">
                     <div className="relative group">
-                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 group-focus-within:text-amber-500 transition-colors">
+                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 group-focus-within:text-blue-500 transition-colors">
                             <User size={19} />
                         </div>
                         <TextInput
@@ -46,7 +46,7 @@ export default function Register() {
                             name="name"
                             value={data.name}
                             placeholder="Nombre"
-                            className="block w-full pl-11 bg-slate-900/50 border-slate-700 text-white placeholder:text-slate-500 focus:border-amber-500 focus:ring-amber-500/20 rounded-xl py-3 transition-all"
+                            className="block w-full pl-11 bg-slate-900/50 border-slate-700 text-white placeholder:text-slate-500 focus:border-blue-500 focus:ring-blue-500/20 rounded-xl py-3 transition-all"
                             autoComplete="name"
                             isFocused={true}
                             onChange={(e) => setData('name', e.target.value)}
@@ -58,7 +58,7 @@ export default function Register() {
                 
                 <div className="space-y-1">
                     <div className="relative group">
-                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 group-focus-within:text-amber-500 transition-colors">
+                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 group-focus-within:text-blue-500 transition-colors">
                             <Mail size={19} />
                         </div>
                         <TextInput
@@ -67,7 +67,7 @@ export default function Register() {
                             name="email"
                             value={data.email}
                             placeholder="Correo electrónico"
-                            className="block w-full pl-11 bg-slate-900/50 border-slate-700 text-white placeholder:text-slate-500 focus:border-amber-500 focus:ring-amber-500/20 rounded-xl py-3 transition-all"
+                            className="block w-full pl-11 bg-slate-900/50 border-slate-700 text-white placeholder:text-slate-500 focus:border-blue-500 focus:ring-blue-500/20 rounded-xl py-3 transition-all"
                             autoComplete="username"
                             onChange={(e) => setData('email', e.target.value)}
                             required
@@ -79,7 +79,7 @@ export default function Register() {
               
                 <div className="space-y-1">
                     <div className="relative group">
-                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 group-focus-within:text-amber-500 transition-colors">
+                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 group-focus-within:text-blue-500 transition-colors">
                             <Lock size={19} />
                         </div>
                         <TextInput
@@ -88,7 +88,7 @@ export default function Register() {
                             name="password"
                             value={data.password}
                             placeholder="Contraseña"
-                            className="block w-full pl-11 bg-slate-900/50 border-slate-700 text-white placeholder:text-slate-500 focus:border-amber-500 focus:ring-amber-500/20 rounded-xl py-3 transition-all"
+                            className="block w-full pl-11 bg-slate-900/50 border-slate-700 text-white placeholder:text-slate-500 focus:border-blue-500 focus:ring-blue-500/20 rounded-xl py-3 transition-all"
                             autoComplete="new-password"
                             onChange={(e) => setData('password', e.target.value)}
                             required
@@ -98,7 +98,7 @@ export default function Register() {
 
                 <div className="space-y-1">
                     <div className="relative group">
-                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 group-focus-within:text-amber-500 transition-colors">
+                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 group-focus-within:text-blue-500 transition-colors">
                             <Lock size={19} />
                         </div>
                         <TextInput
@@ -107,7 +107,7 @@ export default function Register() {
                             name="password_confirmation"
                             value={data.password_confirmation}
                             placeholder="Confirmar"
-                            className="block w-full pl-11 bg-slate-900/50 border-slate-700 text-white placeholder:text-slate-500 focus:border-amber-500 focus:ring-amber-500/20 rounded-xl py-3 transition-all"
+                            className="block w-full pl-11 bg-slate-900/50 border-slate-700 text-white placeholder:text-slate-500 focus:border-blue-500 focus:ring-blue-500/20 rounded-xl py-3 transition-all"
                             autoComplete="new-password"
                             onChange={(e) => setData('password_confirmation', e.target.value)}
                             required
@@ -120,10 +120,10 @@ export default function Register() {
                 )}
 
               
-                <div className="pt-2">
+                <div className="pt-1">
                     <button
                         disabled={processing}
-                        className="w-full flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-3.5 rounded-xl transition-all active:scale-[0.98] shadow-lg shadow-amber-500/20 disabled:opacity-50 group"
+                        className="w-full flex items-center justify-center hover:text-white gap-2 bg-blue-500 hover:bg-blue-600 text-slate-950 font-bold py-3.5 rounded-xl transition-all active:scale-[0.98] shadow-lg shadow-blue-500/20 disabled:opacity-50 group"
                     >
                         <UserPlus size={20} />
                         <span>REGISTRARSE</span>
@@ -132,7 +132,7 @@ export default function Register() {
                 </div>
 
             
-                <div className="relative py-4">
+                <div className="relative py-2">
                     <div className="absolute inset-0 flex items-center">
                         <span className="w-full border-t border-slate-800"></span>
                     </div>
@@ -145,12 +145,12 @@ export default function Register() {
                 <GoogleLoginButton />
 
                 
-                <div className="text-center mt-8">
+                <div className="text-center mt-5">
                     <p className="text-slate-400 text-sm">
                         ¿Ya tienes una cuenta?{' '}
                         <Link
                             href={route('login')}
-                            className="text-amber-500 font-bold hover:text-amber-400 transition-colors underline underline-offset-4"
+                            className="text-blue-500 font-bold hover:text-blue-400 transition-colors underline underline-offset-4"
                         >
                             Inicia sesión aquí
                         </Link>

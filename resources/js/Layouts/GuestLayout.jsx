@@ -3,7 +3,7 @@
 export default function GuestLayout({ children }) {
     return (
         // Cambiamos el azul brillante por un Slate-950 (el color de fondo del dashboard)
-        <div className="flex min-h-screen flex-col items-center bg-[#0f172a] pt-6 sm:justify-center sm:pt-0">
+        <div className="flex min-h-screen flex-col gap-4 items-center bg-[#0f172a] pt-6 sm:justify-center sm:pt-0">
             {/* <div className="mb-4 transform transition hover:scale-105">
                 <Link href="/">
                     
@@ -15,7 +15,7 @@ export default function GuestLayout({ children }) {
                2. border-slate-800: Separación sutil.
                3. shadow-xl: Para dar profundidad sobre el fondo negro.
             */}
-            <div className="mt-6 w-full overflow-hidden bg-[#1e293b] border border-slate-800 px-8 py-10 shadow-2xl sm:max-w-md sm:rounded-2xl">
+            <div className="mt-6 w-full overflow-hidden bg-[#1e293b] border border-slate-800 px-8 py-4 shadow-2xl sm:max-w-md sm:rounded-2xl">
                 {children}
             </div>
             
