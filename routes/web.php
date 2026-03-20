@@ -15,6 +15,7 @@ use App\Http\Controllers\StockController;
 use App\Http\Controllers\VentasController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\DemoController;
 use Inertia\Inertia;
 
 Route::get('/', function () {
@@ -22,6 +23,8 @@ Route::get('/', function () {
     })->name('welcome');
 
 Route::get('/nosotros', [ProductController::class, 'index'])->name('nosotros');
+
+Route::get('/demos', [DemoController::class, 'index'])->name('demos');
 
 Route::get('/tienda', [ProductController::class, 'getAllProducts'])->name('tienda.index');
 
